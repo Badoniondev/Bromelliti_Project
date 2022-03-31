@@ -132,6 +132,7 @@ public class Frame extends javax.swing.JFrame{
     }//GEN-LAST:event_btnnuovoStudenteActionPerformed
 
     private void btnMostrastudentiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrastudentiActionPerformed
+        
         listastudenti = registro.getStudenti();
         for (int i = 0; i != listastudenti.size() ; i++) {
             s = (Studente) listastudenti.get(i);
@@ -139,10 +140,13 @@ public class Frame extends javax.swing.JFrame{
             matricola = s.getMatricola();
             var = Integer.toString(matricola);
             areaRegistro.append(var + "|");
-            var = Integer.toString(matricola);
             nome = s.getNome();
+            areaRegistro.append(nome + "|");
             sesso = s.getSesso();
+            areaRegistro.append(sesso + "|");
             classe = s.getClasse();
+            var = Integer.toString(classe);
+            areaRegistro.append(var + "\n");
         }
             
     }//GEN-LAST:event_btnMostrastudentiActionPerformed
