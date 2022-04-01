@@ -12,6 +12,8 @@ import java.util.Vector;
  * @author 4D
  */
 public class Frame extends javax.swing.JFrame{
+    
+    boolean errore = false; 
 
     int matricola;
     int classe;
@@ -144,12 +146,16 @@ public class Frame extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnnuovoStudenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuovoStudenteActionPerformed
-        matricola = Integer.valueOf(txtfldMatricola.getText());
-        nome = txtfldNome.getText();
-        sesso = txtfldSesso.getText();
-        classe = Integer.valueOf(txtfldClasse.getText());
-        registro.nuovoStudente(matricola, nome, sesso, classe);
-        areaRegistro.append("Nuovo studente aggiunto\n");
+        try {
+            matricola = Integer.valueOf(txtfldMatricola.getText());
+            classe = Integer.valueOf(txtfldClasse.getText());
+            nome = txtfldNome.getText();
+            sesso = txtfldSesso.getText();
+            registro.nuovoStudente(matricola, nome, sesso, classe);
+            areaRegistro.append("Nuovo studente aggiunto\n");
+        } catch (NumberFormatException numberFormatException) {
+            areaRegistro.setText("Errore durante la creazione dello studente.\nControlla che la matricola e la classe siano numeri.");
+        }
     }//GEN-LAST:event_btnnuovoStudenteActionPerformed
 
     private void btnMostrastudentiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrastudentiActionPerformed
