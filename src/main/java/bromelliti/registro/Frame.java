@@ -12,8 +12,6 @@ import java.util.Vector;
  * @author 4D
  */
 public class Frame extends javax.swing.JFrame{
-    
-    boolean errore = false; 
 
     int matricola;
     int classe;
