@@ -12,15 +12,22 @@ import java.util.Vector;
  * @author 4D
  */
 public class Studente {
-    int matricola;
+    
+    Vector voti;
+    
     String nome;
     String sesso;
+    
+    char sezione;
+    
+    int matricola;
     int classe;
-    Vector voti;
+    
     boolean promosso;
     
 
-    public Studente(int matricola, String nome, String sesso, int classe) {
+    public Studente(int matricola, String nome, String sesso, int classe, char sezione) {
+        this.sezione = sezione;
         this.matricola = matricola;
         this.nome = nome;
         this.sesso = sesso;
@@ -66,6 +73,22 @@ public class Studente {
 
     public void setClasse(int classe) {
         this.classe = classe;
+    }
+
+    public char getSezione() {
+        return sezione;
+    }
+
+    public void setSezione(char sezione) {
+        this.sezione = sezione;
+    }
+
+    public boolean isPromosso() {
+        return promosso;
+    }
+
+    public void setPromosso(boolean promosso) {
+        this.promosso = promosso;
     }
     
     
