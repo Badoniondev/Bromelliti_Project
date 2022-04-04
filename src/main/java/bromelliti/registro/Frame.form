@@ -57,7 +57,7 @@
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="25" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnC" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -125,8 +125,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtfldMatricola">
+      <Properties>
+        <Property name="columns" type="int" value="5"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtfldNome">
+      <Properties>
+        <Property name="columns" type="int" value="4"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfldNomeActionPerformed"/>
       </Events>

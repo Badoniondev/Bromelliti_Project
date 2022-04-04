@@ -70,6 +70,9 @@ public class Frame extends javax.swing.JFrame{
             }
         });
 
+        txtfldMatricola.setColumns(5);
+
+        txtfldNome.setColumns(4);
         txtfldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfldNomeActionPerformed(evt);
@@ -149,7 +152,7 @@ public class Frame extends javax.swing.JFrame{
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnC)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
