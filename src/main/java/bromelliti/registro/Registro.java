@@ -15,8 +15,8 @@ public class Registro {
     Vector studenti = new Vector(0);
     Studente studente;
     
-    public void nuovoStudente(int matricola, String nome, String sesso, int classe){
-        studente = new Studente(matricola, nome, sesso, classe);
+    public void nuovoStudente(int matricola, String nome, String sesso, int classe, char sezione){
+        studente = new Studente(matricola, nome, sesso, classe, sezione);
         studenti.add(studente);
     }
     

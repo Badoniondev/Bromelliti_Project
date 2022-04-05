@@ -22,6 +22,8 @@ public class Frame extends javax.swing.JFrame{
     String sesso;
     String var;//variabile ausiliaria usata per i casting
     
+    char sezione;
+    
     Vector listastudenti;
     
     Studente s; 
@@ -42,13 +44,19 @@ public class Frame extends javax.swing.JFrame{
         btnnuovoStudente = new javax.swing.JButton();
         txtfldMatricola = new javax.swing.JTextField();
         txtfldNome = new javax.swing.JTextField();
-        txtfldClasse = new javax.swing.JTextField();
-        txtfldSesso = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaRegistro = new javax.swing.JTextArea();
         btnMostrastudenti = new javax.swing.JButton();
         btnC = new javax.swing.JButton();
         btnAggiungivoto = new javax.swing.JButton();
+        boxSesso = new javax.swing.JComboBox<>();
+        boxClasse = new javax.swing.JComboBox<>();
+        boxSezione = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(500, 500));
@@ -62,13 +70,14 @@ public class Frame extends javax.swing.JFrame{
             }
         });
 
-        txtfldMatricola.setText("Matricola");
+        txtfldMatricola.setColumns(5);
 
-        txtfldNome.setText("Nome");
-
-        txtfldClasse.setText("Classe");
-
-        txtfldSesso.setText("Sesso");
+        txtfldNome.setColumns(4);
+        txtfldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldNomeActionPerformed(evt);
+            }
+        });
 
         areaRegistro.setEditable(false);
         areaRegistro.setColumns(20);
@@ -92,6 +101,27 @@ public class Frame extends javax.swing.JFrame{
 
         btnAggiungivoto.setText("Aggiungi Voto");
 
+        boxSesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maschio", "Femmina" }));
+        boxSesso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxSessoActionPerformed(evt);
+            }
+        });
+
+        boxClasse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        boxSezione.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E", "F", "G" }));
+
+        jLabel1.setText("Classe");
+
+        jLabel2.setText("Sezione");
+
+        jLabel3.setText("Sesso");
+
+        jLabel4.setText("Nome");
+
+        jLabel5.setText("Matricola");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,15 +131,30 @@ public class Frame extends javax.swing.JFrame{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtfldMatricola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfldMatricola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtfldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(txtfldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtfldSesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(boxSesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtfldClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnC))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(boxClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(boxSezione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnC)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnMostrastudenti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAggiungivoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -119,25 +164,33 @@ public class Frame extends javax.swing.JFrame{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnC)
-                    .addComponent(btnMostrastudenti))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtfldMatricola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfldClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfldSesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnC)
+                            .addComponent(btnMostrastudenti))
                         .addGap(2, 2, 2)
                         .addComponent(btnAggiungivoto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnnuovoStudente)))
+                        .addComponent(btnnuovoStudente))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtfldMatricola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtfldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boxSesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boxClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boxSezione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -146,14 +199,41 @@ public class Frame extends javax.swing.JFrame{
 
     private void btnnuovoStudenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuovoStudenteActionPerformed
         try {
+            switch(boxSezione.getSelectedIndex()){
+                case 0:
+                    sezione = 'A';
+                    break;
+                case 1:
+                    sezione = 'B';
+                    break;
+                case 2:
+                    sezione = 'C';
+                    break;
+                case 3:
+                    sezione = 'D';
+                    break;
+                case 4:
+                    sezione = 'E';
+                    break;
+                case 5:
+                    sezione = 'F';
+                    break;
+                case 6:
+                    sezione = 'G';
+                    break;
+            }
             matricola = Integer.valueOf(txtfldMatricola.getText());
-            classe = Integer.valueOf(txtfldClasse.getText());
+            classe = boxClasse.getSelectedIndex()+1;
             nome = txtfldNome.getText();
-            sesso = txtfldSesso.getText();
-            registro.nuovoStudente(matricola, nome, sesso, classe);
+            if (boxSesso.getSelectedIndex() == 0){
+                sesso = "Maschio";
+            } else {
+                sesso = "Femmina";
+            }
+            registro.nuovoStudente(matricola, nome, sesso, classe, sezione);
             areaRegistro.append("Nuovo studente aggiunto\n");
         } catch (NumberFormatException numberFormatException) {
-            areaRegistro.setText("Errore durante la creazione dello studente.\nControlla che la matricola e la classe siano numeri.\n");
+            areaRegistro.setText("Errore durante la creazione dello studente.\nControlla che la matricola sia un numero.\n");
         }
     }//GEN-LAST:event_btnnuovoStudenteActionPerformed
 
@@ -181,6 +261,14 @@ public class Frame extends javax.swing.JFrame{
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
         areaRegistro.setText("");
     }//GEN-LAST:event_btnCActionPerformed
+
+    private void boxSessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxSessoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxSessoActionPerformed
+
+    private void txtfldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,14 +307,20 @@ public class Frame extends javax.swing.JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaRegistro;
+    private javax.swing.JComboBox<String> boxClasse;
+    private javax.swing.JComboBox<String> boxSesso;
+    private javax.swing.JComboBox<String> boxSezione;
     private javax.swing.JButton btnAggiungivoto;
     private javax.swing.JButton btnC;
     private javax.swing.JButton btnMostrastudenti;
     private javax.swing.JButton btnnuovoStudente;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtfldClasse;
     private javax.swing.JTextField txtfldMatricola;
     private javax.swing.JTextField txtfldNome;
-    private javax.swing.JTextField txtfldSesso;
     // End of variables declaration//GEN-END:variables
 }
